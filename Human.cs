@@ -9,18 +9,23 @@ namespace rPSLSGame
     class Human : Player
     {
         // variables (HAS A)
-
         //constructor (SPAWN)
         public Human(string name)
         {
             this.name = name;
             score = 0;
+            ListOfGestures = new List<string>();
         }
 
-        //member methods(CAN DO)
-        public override void ChooseGesture()
+    //member methods(CAN DO)
+
+    public override void ChooseGesture()
         {
-            Console.WriteLine(name + ", please choose a gesture from rock, paper, scissor, lizard and Spock.");
+            Console.WriteLine(name + ", please choose a gesture from: ");
+            PopulateGesture(ListOfGestures);
+            foreach (string gesture in ListOfGestures)
+            { Console.WriteLine(gesture); }
+            
             gesture = (Console.ReadLine());
             switch (gesture)
             {
@@ -32,15 +37,13 @@ namespace rPSLSGame
                     break;
                 case "lizard":
                     break;
-                case "Spock":
+                case "spock":
                     break;
                 default:
                     Console.WriteLine("Not an option. Try agian.");
                     ChooseGesture();
                     break;
             }
-
-
         }
     }
 }

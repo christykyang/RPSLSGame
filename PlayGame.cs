@@ -11,25 +11,45 @@ namespace rPSLSGame
         //member variables
         public Player player1;
         public Player player2;
-        //public AI comp1;
-        //public AI comp2;
+        public string playAgain;
         public string numberOfPlayers;
-        //public Gesture compareGesture;
-        public static List<string> ListOfGestures = new List<string> { "rock", "paper", "scissor", "lizard", "Spock" };
-
-
+        public string rulesList;
         //constructors
         public PlayGame()
         {
+            Console.WriteLine("Welcome to Rock, Paper, Scissor, Lizard, Spock!");
+            Console.ReadLine();
             DisplayRules();
-            HowManyPlayers();
-            RunGame();
         }
-
         //member methods
         public void DisplayRules()
         {
-
+            Console.WriteLine("Do you need the list of rules?");
+            rulesList = (Console.ReadLine());
+            if (rulesList == "yes")
+            {
+                Console.WriteLine("Rock crushes Scissor");
+                Console.WriteLine("Scissor cuts paper");
+                Console.WriteLine("Paper covers Rock");
+                Console.WriteLine("Rock crushes Lizard");
+                Console.WriteLine("Lizard poisons Spock");
+                Console.WriteLine("Spock smashes Scissor");
+                Console.WriteLine("Scissor decapitates Lizard");
+                Console.WriteLine("Lizard eats Paper");
+                Console.WriteLine("Paper disproves Spock");
+                Console.WriteLine("Spock vaporizes Rock");
+                Console.ReadLine();
+                RunGame();
+            }
+            else if (rulesList == "no")
+            {
+                RunGame();
+            }
+            else
+            {
+                Console.WriteLine("Please choose yes or no.");
+                DisplayRules();
+            }
         }
 
         public void HowManyPlayers()
@@ -74,6 +94,8 @@ namespace rPSLSGame
         }
         public void RunGame()
         {
+            Console.WriteLine("Let's play!");
+            HowManyPlayers();
             while (player1.score <= 2 && player2.score <= 2)
             {
                 player1.ChooseGesture();
@@ -82,92 +104,106 @@ namespace rPSLSGame
             }
 
             DisplayWinner();
+            PlayAgain();
         }
         public void DisplayWinner()
         {
             if (player1.score == 3)
             {
-                Console.WriteLine("Player 1 wins!");
+                Console.WriteLine(player1.name + " wins!");
             }
             else if (player2.score == 3)
             {
-                Console.WriteLine("Player 2 wins!");
+                Console.WriteLine(player2.name + " wins!");
             }
 
         }
+        public void PlayAgain()
+        {
+            Console.WriteLine("Would you like to play again?");
+            playAgain = (Console.ReadLine());
+            if (playAgain == "yes")
+            {
+                RunGame();
+            }
+            else
+            {
+                Console.WriteLine("Thanks for playing!");
+            }
+        }
         public void CompareGestures()
         {
-            if (player1.gesture == ListOfGestures[0] && player2.gesture == ListOfGestures[2] || player2.gesture == ListOfGestures[3])
+            if (player1.gesture == player1.ListOfGestures[0] && player2.gesture == player2.ListOfGestures[2] || player2.gesture == player2.ListOfGestures[3])
             {
                 player1.PlayerScoredPoints();
                 Console.WriteLine(player1.name + " wins round!");
                 Console.ReadLine();
                 return;
             }
-            if (player1.gesture == ListOfGestures[1] && player2.gesture == ListOfGestures[0] || player2.gesture == ListOfGestures[4])
+            else if (player1.gesture == player1.ListOfGestures[1] && player2.gesture == player2.ListOfGestures[0] || player2.gesture == player2.ListOfGestures[4])
             {
                 player1.PlayerScoredPoints();
                 Console.WriteLine(player1.name + " wins round!");
                 Console.ReadLine();
                 return;
             }
-            if (player1.gesture == ListOfGestures[2] && player2.gesture == ListOfGestures[1] || player2.gesture == ListOfGestures[3])
+            else if (player1.gesture == player1.ListOfGestures[2] && player2.gesture == player2.ListOfGestures[1] || player2.gesture == player2.ListOfGestures[3])
             {
                 player1.PlayerScoredPoints();
                 Console.WriteLine(player1.name + " wins round!");
                 Console.ReadLine();
                 return;
             }
-            if (player1.gesture == ListOfGestures[3] && player2.gesture == ListOfGestures[4] || player2.gesture == ListOfGestures[1])
+            else if (player1.gesture == player1.ListOfGestures[3] && player2.gesture == player2.ListOfGestures[4] || player2.gesture == player2.ListOfGestures[1])
             {
                 player1.PlayerScoredPoints();
                 Console.WriteLine(player1.name + " wins round!");
                 Console.ReadLine();
                 return;
             }
-            if (player1.gesture == ListOfGestures[4] && player2.gesture == ListOfGestures[0] || player2.gesture == ListOfGestures[2])
+            else if (player1.gesture == player1.ListOfGestures[4] && player2.gesture == player2.ListOfGestures[0] || player2.gesture == player2.ListOfGestures[2])
             {
                 player1.PlayerScoredPoints();
                 Console.WriteLine(player1.name + " wins round!");
                 Console.ReadLine();
                 return;
             }
-            if (player2.gesture == ListOfGestures[0] && player1.gesture == ListOfGestures[2] || player1.gesture == ListOfGestures[3])
+            else if (player2.gesture == player2.ListOfGestures[0] && player1.gesture == player1.ListOfGestures[2] || player1.gesture == player1.ListOfGestures[3])
             {
                 player2.PlayerScoredPoints();
                 Console.WriteLine(player2.name + " wins round!");
                 Console.ReadLine();
                 return;
             }
-            if (player2.gesture == ListOfGestures[1] && player1.gesture == ListOfGestures[0] || player1.gesture == ListOfGestures[4])
+            else if (player2.gesture == player2.ListOfGestures[1] && player1.gesture == player1.ListOfGestures[0] || player1.gesture == player1.ListOfGestures[4])
             {
                 player2.PlayerScoredPoints();
                 Console.WriteLine(player2.name + " wins round!");
                 Console.ReadLine();
                 return;
             }
-            if (player2.gesture == ListOfGestures[2] && player1.gesture == ListOfGestures[1] || player1.gesture == ListOfGestures[3])
+            else if (player2.gesture == player2.ListOfGestures[2] && player1.gesture == player1.ListOfGestures[1] || player1.gesture == player1.ListOfGestures[3])
             {
                 player2.PlayerScoredPoints();
                 Console.WriteLine(player2.name + " wins round!");
                 Console.ReadLine();
                 return;
             }
-            if (player2.gesture == ListOfGestures[3] && player1.gesture == ListOfGestures[4] || player1.gesture == ListOfGestures[1])
+            else if (player2.gesture == player2.ListOfGestures[3] && player1.gesture == player1.ListOfGestures[4] || player1.gesture == player1.ListOfGestures[1])
             {
                 player2.PlayerScoredPoints();
                 Console.WriteLine(player2.name + " wins round!");
                 Console.ReadLine();
                 return;
             }
-            if (player2.gesture == ListOfGestures[4] && player1.gesture == ListOfGestures[0] || player1.gesture == ListOfGestures[2])
+            else if (player2.gesture == player2.ListOfGestures[4] && player1.gesture == player1.ListOfGestures[0] || player1.gesture == player1.ListOfGestures[2])
             {
                 player2.PlayerScoredPoints();
                 Console.WriteLine(player2.name + " wins round!");
                 Console.ReadLine();
                 return;
             }
-            if (player1.gesture == player2.gesture)
+            else if (player1.gesture == player2.gesture)
             {
                 Console.WriteLine("You tied! Move on to next round.");
                 Console.ReadLine();
@@ -175,10 +211,7 @@ namespace rPSLSGame
             }
         }
     }
-        //else
-        //{
-        //    player2.ScoredPoints();
-        //}
+        
         
     }
         
