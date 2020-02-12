@@ -9,86 +9,76 @@ namespace rPSLSGame
     class PlayGame
     {
         //member variables
-        public Human player1;
-        public Human player2;
-        public AI comp;
-        public int numberOfPlayers;
-        public Gesture compareGesture;
+        public Player player1;
+        public Player player2;
+        //public AI comp1;
+        //public AI comp2;
+        public string numberOfPlayers;
+        //public Gesture compareGesture;
+        List<string> ListOfGestures = new List<string> { "rock", "paper", "scissor", "lizard", "Spock" };
 
 
         //constructors
         public PlayGame()
         {
+            DisplayRules();
+            HowManyPlayers();
+            RunGame();
+        }
+
+        //member methods
+        public void DisplayRules()
+        {
+
+        }
+
+        public void HowManyPlayers()
+        {
             Console.WriteLine("How many players did you want playing?");
-            numberOfPlayers = int.Parse(Console.ReadLine());
-            if (numberOfPlayers == 1)
+            numberOfPlayers = (Console.ReadLine());
+            switch (numberOfPlayers)
             {
-                Console.WriteLine("Who is player 1");
-                player1 = new Human(Console.ReadLine());
-                comp = new AI();
-                RunOnePlayerGame();
+                case "1":
+                    break;
+                case "2":
+                    break;
+                case "0":
+                    break;
+                default:
+                    Console.WriteLine("Not a vaild option. Please try again.");
+                    break;
             }
-            else
+            //numberOfPlayers = int.Parse(Console.ReadLine());
+            if (numberOfPlayers == "1")
+            {
+                Console.WriteLine("Who is player 1?");
+                player1 = new Human(Console.ReadLine());
+                player2 = new AI();
+            }
+            else //(numberOfPlayers == "2")
             {
                 Console.WriteLine("Who is player 1?");
                 player1 = new Human(Console.ReadLine());
                 Console.WriteLine("Who is player 2?");
                 player2 = new Human(Console.ReadLine());
-                RunMultiplayerGame();
             }
-        }
+            //else
+            //{
+            //    player1 = new AI();
+            //    player2 = new AI();
+            //}
 
-        //member methods
-        public void RunOnePlayerGame()
-        {
-            
         }
-        public void RunMultiplayerGame()
+        public void RunGame()
         {
-            Console.WriteLine("Who is player 1?");
-            
             while (player1.score < 2 && player2.score < 2)
             {
                 player1.ChooseGesture();
                 player2.ChooseGesture();
-                CompareMultiPlayerGestures();
+                CompareGestures();
             }
-            DisplayWinner();
-            Console.ReadLine();
-        }
-        public void RunGame(Gesture gesture)
-        {
-            while (player1.score < 2 && player2.score < 2)
-            {
 
-            }
-        }
-        public void CompareMultiPlayerGestures()
-        {
-            if (player1.gesture == compareGesture.list[0] && player2.gesture == compareGesture.list[2] || player2.gesture == compareGesture.list[3])
-            {
-                player1.HumanScoredPoints(player1);   
-            }
-            if (player1.gesture == compareGesture.list[1] && player2.gesture == compareGesture.list[0] || player2.gesture == compareGesture.list[4])
-            {
-                player1.HumanScoredPoints(player1);
-            }
-            if (player1.gesture == compareGesture.list[2] && player2.gesture == compareGesture.list[1] || player2.gesture == compareGesture.list[3])
-            {
-                player1.HumanScoredPoints(player1);
-            }
-            if (player1.gesture == compareGesture.list[3] && player2.gesture == compareGesture.list[4] || player2.gesture == compareGesture.list[1])
-            {
-                player1.HumanScoredPoints(player1);
-            }
-            if (player1.gesture == compareGesture.list[4] && player2.gesture == compareGesture.list[0] || player2.gesture == compareGesture.list[2])
-            {
-                player1.HumanScoredPoints(player1);
-            }
-            else
-            {
-                player2.HumanScoredPoints(player2);
-            }
+            DisplayWinner();
         }
         public void DisplayWinner()
         {
@@ -96,10 +86,61 @@ namespace rPSLSGame
             {
                 Console.WriteLine("Player 1 wins!");
             }
-            else
+            else if (player2.score == 3)
             {
                 Console.WriteLine("Player 2 wins!");
             }
+
+        }
+        public void CompareGestures()
+        {
+            if (player1.gesture == ListOfGestures[0] && player2.gesture == ListOfGestures[2] || player2.gesture == ListOfGestures[3])
+            {
+                player1.ScoredPoints();
+            }
+            if (player1.gesture == ListOfGestures[1] && player2.gesture == ListOfGestures[0] || player2.gesture == ListOfGestures[4])
+            {
+                player1.ScoredPoints();
+            }
+            if (player1.gesture == ListOfGestures[2] && player2.gesture == ListOfGestures[1] || player2.gesture == ListOfGestures[3])
+            {
+                player1.ScoredPoints();
+            }
+            if (player1.gesture == ListOfGestures[3] && player2.gesture == ListOfGestures[4] || player2.gesture == ListOfGestures[1])
+            {
+                player1.ScoredPoints();
+            }
+            if (player1.gesture == ListOfGestures[4] && player2.gesture == ListOfGestures[0] || player2.gesture == ListOfGestures[2])
+            {
+                player1.ScoredPoints();
+            }
+            if (player2.gesture == ListOfGestures[0] && player1.gesture == ListOfGestures[2] || player1.gesture == ListOfGestures[3])
+            {
+                player2.ScoredPoints();
+            }
+            if (player2.gesture == ListOfGestures[1] && player1.gesture == ListOfGestures[0] || player1.gesture == ListOfGestures[4])
+            {
+                player2.ScoredPoints();
+            }
+            if (player2.gesture == ListOfGestures[2] && player1.gesture == ListOfGestures[1] || player1.gesture == ListOfGestures[3])
+            {
+                player2.ScoredPoints();
+            }
+            if (player2.gesture == ListOfGestures[3] && player1.gesture == ListOfGestures[4] || player1.gesture == ListOfGestures[1])
+            {
+                player2.ScoredPoints();
+            }
+            if (player2.gesture == ListOfGestures[4] && player1.gesture == ListOfGestures[0] || player1.gesture == ListOfGestures[2])
+            {
+                player2.ScoredPoints();
+            }
         }
     }
-}
+        //else
+        //{
+        //    player2.ScoredPoints();
+        //}
+        
+    }
+        
+

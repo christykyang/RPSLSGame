@@ -11,6 +11,7 @@ namespace rPSLSGame
         
         public string gesture;
         public int score;
+        public string name;
 
         //public List<string> gesturesList = new List<string>();
 
@@ -19,6 +20,7 @@ namespace rPSLSGame
         {
             score = 0;
         }
+        public abstract void ChooseGesture();
         //public Gesture(List<string> gestures)
         //{
         //    gestures.Add("rock");
@@ -27,6 +29,11 @@ namespace rPSLSGame
         //    gestures.Add("lizard");
         //    gestures.Add("Spock");
         //}
+        public void ScoredPoints()
+        {
+            score++;
+            Console.WriteLine("Player " + name + " wins round!");
+        }
 
 
 

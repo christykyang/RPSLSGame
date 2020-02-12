@@ -11,7 +11,6 @@ namespace rPSLSGame
         //public List<Gesture> gesturesList;
         public List<string> list = new List<string>();
         //Random rndGesture = new Random();
-        public bool win;
 
         public Gesture()
         {

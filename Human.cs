@@ -10,37 +10,37 @@ namespace rPSLSGame
     {
         // variables (HAS A)
 
-        public int score;
-        public string gesture;
-        public Gesture gestureList;
-        public string name;
-
         //constructor (SPAWN)
         public Human(string name)
         {
             this.name = name;
             score = 0;
-            //gestureList = new Gesture();
         }
 
         //member methods(CAN DO)
-        public void ChooseGesture()
+        public override void ChooseGesture()
         {
-            Console.WriteLine("Please choose a gesture from: ");
-            foreach (string gesture in gestureList.list)
+            Console.WriteLine("Please choose a gesture from rock, paper, scissor, lizard and Spock.");
+            gesture = (Console.ReadLine());
+            switch (gesture)
             {
-                Console.ReadLine();
+                case "rock":
+                    break;
+                case "paper":
+                    break;
+                case "scissor":
+                    break;
+                case "lizard":
+                    break;
+                case "Spock":
+                    break;
+                default:
+                    Console.WriteLine("Not an option. Try agian.");
+                    break;
             }
-            //Console.WriteLine(gesture);
             
 
+
         }
-        public void HumanScoredPoints(Human human)
-        {
-            score++;
-            Console.WriteLine(human + " wins round!");
-        }
-        public void HumanWins()
-        { }
     }
 }
