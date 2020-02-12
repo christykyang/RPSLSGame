@@ -29,10 +29,9 @@ namespace rPSLSGame
         //    gestures.Add("lizard");
         //    gestures.Add("Spock");
         //}
-        public void ScoredPoints()
+        public void PlayerScoredPoints()
         {
             score++;
-            Console.WriteLine("Player " + name + " wins round!");
         }
 
 

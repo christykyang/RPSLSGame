@@ -20,7 +20,7 @@ namespace rPSLSGame
         //member methods(CAN DO)
         public override void ChooseGesture()
         {
-            Console.WriteLine("Please choose a gesture from rock, paper, scissor, lizard and Spock.");
+            Console.WriteLine(name + ", please choose a gesture from rock, paper, scissor, lizard and Spock.");
             gesture = (Console.ReadLine());
             switch (gesture)
             {
@@ -36,9 +36,9 @@ namespace rPSLSGame
                     break;
                 default:
                     Console.WriteLine("Not an option. Try agian.");
+                    ChooseGesture();
                     break;
             }
-            
 
 
         }
