@@ -15,6 +15,7 @@ namespace rPSLSGame
         public string readyToPlay;
         public string numberOfPlayers;
         public string rulesList;
+        Random random = new Random();
         //constructors
         public PlayGame()
         {
@@ -116,7 +117,7 @@ namespace rPSLSGame
                 Console.WriteLine("Who is player 1?");
                 player1 = new Human(Console.ReadLine());
                 Console.ReadLine();
-                player2 = new AI("Computer");
+                player2 = new AI("Computer", random);
             }
             else if (numberOfPlayers == "2")
             {
@@ -128,8 +129,8 @@ namespace rPSLSGame
             else
             {
                 Console.WriteLine("Since 1 or 2 players were not choose computer will play against computer.");
-                player1 = new AI("Computer Scar");
-                player2 = new AI("Computer Mufasa");
+                player1 = new AI("Computer Scar", random);
+                player2 = new AI("Computer Mufasa" , random);
             }
         }
         public void DisplayWinner()

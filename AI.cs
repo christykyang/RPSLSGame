@@ -11,8 +11,9 @@ namespace rPSLSGame
         //Do we need varables? (HAS A)
         Random random;
         //constructor (Spawn)
-        public AI(string name)
+        public AI(string name, Random rng)
         {
+            random = rng;
             this.name = name;
             score = 0;
             ListOfGestures = new List<string>();
@@ -22,7 +23,7 @@ namespace rPSLSGame
         
         public override void ChooseGesture()
         {
-            random = new Random();
+            
             int index = random.Next(ListOfGestures.Count);
             gesture = ListOfGestures[index];
             Console.WriteLine(name + " chose " + gesture + ".");
