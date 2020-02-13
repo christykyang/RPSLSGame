@@ -128,7 +128,7 @@ namespace rPSLSGame
             }
             else
             {
-                Console.WriteLine("Since 1 or 2 players were not choose computer will play against computer.");
+                Console.WriteLine("Since 1 or 2 players were not choosen computer will play against computer.");
                 player1 = new AI("Computer Scar", random);
                 player2 = new AI("Computer Mufasa" , random);
             }
@@ -163,7 +163,7 @@ namespace rPSLSGame
             if (player1.gesture == player1.ListOfGestures[0] && (player2.gesture == player2.ListOfGestures[2] || player2.gesture == player2.ListOfGestures[3]))
             {
                     player1.PlayerScoredPoints();
-                    Console.WriteLine(player1.name + "chose " + player1.gesture + " which crushes " + player2.gesture);
+                    Console.WriteLine(player1.name + " chose " + player1.gesture + " which crushes " + player2.gesture);
                     Console.WriteLine(player1.name + " wins round!");
                     Console.ReadLine();
             }
@@ -180,7 +180,7 @@ namespace rPSLSGame
                 else
                 {
                     player1.PlayerScoredPoints();
-                    Console.WriteLine(player1.name + " chose " + player1.gesture + "which disproves " + player2.gesture);
+                    Console.WriteLine(player1.name + " chose " + player1.gesture + " which disproves " + player2.gesture);
                     Console.WriteLine(player1.name + " wins round!");
                     Console.ReadLine();
                     return;
@@ -191,7 +191,7 @@ namespace rPSLSGame
                 if (player2.gesture == player2.ListOfGestures[1])
                 {
                     player1.PlayerScoredPoints();
-                    Console.WriteLine(player1.name + " chose " + player1.gesture + "which cuts " + player2.gesture);
+                    Console.WriteLine(player1.name + " chose " + player1.gesture + " which cuts " + player2.gesture);
                     Console.WriteLine(player1.name + " wins round!");
                     Console.ReadLine();
                     return;
@@ -211,7 +211,7 @@ namespace rPSLSGame
                 if (player2.gesture == player2.ListOfGestures[4])
                 {
                     player1.PlayerScoredPoints();
-                    Console.WriteLine(player1.name + " chose " + player1.gesture + "who poisons " + player2.gesture);
+                    Console.WriteLine(player1.name + " chose " + player1.gesture + " who poisons " + player2.gesture);
                     Console.WriteLine(player1.name + " wins round!");
                     Console.ReadLine();
                     return;
@@ -219,7 +219,7 @@ namespace rPSLSGame
                 else
                 {
                     player1.PlayerScoredPoints();
-                    Console.WriteLine(player1.name + " chose " + player1.gesture + "who eats " + player2.gesture);
+                    Console.WriteLine(player1.name + " chose " + player1.gesture + " who eats " + player2.gesture);
                     Console.WriteLine(player1.name + " wins round!");
                     Console.ReadLine();
                     return;
@@ -230,7 +230,7 @@ namespace rPSLSGame
                 if (player2.gesture == player2.ListOfGestures[2])
                 {
                     player1.PlayerScoredPoints();
-                    Console.WriteLine(player1.name + " chose " + player1.gesture + "who smashes " + player2.gesture);
+                    Console.WriteLine(player1.name + " chose " + player1.gesture + " who smashes " + player2.gesture);
                     Console.WriteLine(player1.name + " wins round!");
                     Console.ReadLine();
                     return;
@@ -238,7 +238,7 @@ namespace rPSLSGame
                 else
                 {
                     player1.PlayerScoredPoints();
-                    Console.WriteLine(player1.name + " chose " + player1.gesture + "who vaporizes " + player2.gesture);
+                    Console.WriteLine(player1.name + " chose " + player1.gesture + " who vaporizes " + player2.gesture);
                     Console.WriteLine(player1.name + " wins round!");
                     Console.ReadLine();
                     return;
@@ -275,7 +275,7 @@ namespace rPSLSGame
                 if (player1.gesture == player1.ListOfGestures[1])
                 {
                     player1.PlayerScoredPoints();
-                    Console.WriteLine(player2.name + " chose " + player2.gesture + "which cuts " + player1.gesture);
+                    Console.WriteLine(player2.name + " chose " + player2.gesture + " which cuts " + player1.gesture);
                     Console.WriteLine(player2.name + " wins round!");
                     Console.ReadLine();
                     return;
@@ -321,7 +321,7 @@ namespace rPSLSGame
                 else
                 {
                     player1.PlayerScoredPoints();
-                    Console.WriteLine(player2.name + " chose " + player2.gesture + "who vaporizes " + player1.gesture);
+                    Console.WriteLine(player2.name + " chose " + player2.gesture + " who vaporizes " + player1.gesture);
                     Console.WriteLine(player2.name + " wins round!");
                     Console.ReadLine();
                     return;

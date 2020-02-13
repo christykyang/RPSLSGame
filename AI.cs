@@ -23,7 +23,6 @@ namespace rPSLSGame
         
         public override void ChooseGesture()
         {
-            
             int index = random.Next(ListOfGestures.Count);
             gesture = ListOfGestures[index];
             Console.WriteLine(name + " chose " + gesture + ".");

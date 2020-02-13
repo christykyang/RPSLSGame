@@ -23,7 +23,6 @@ namespace rPSLSGame
     public override void ChooseGesture()
         {
             Console.WriteLine(name + ", please choose a gesture from: ");
-            //PopulateGesture(ListOfGestures);
             foreach (string gesture in ListOfGestures)
             { Console.WriteLine(gesture); }
 
