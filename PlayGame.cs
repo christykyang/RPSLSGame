@@ -20,54 +20,81 @@ namespace rPSLSGame
         {
             Console.WriteLine("Welcome to Rock, Paper, Scissor, Lizard, Spock!");
             Console.ReadLine();
+            Console.WriteLine("Do you need the list of rules?");
             DisplayRules();
         }
         //member methods
         public void DisplayRules()
         {
-            Console.WriteLine("Do you need the list of rules?");
             rulesList = (Console.ReadLine());
-            if (rulesList == "yes")
+            switch (rulesList)
             {
-                Console.WriteLine("Rock crushes Scissor");
-                Console.WriteLine("Scissor cuts paper");
-                Console.WriteLine("Paper covers Rock");
-                Console.WriteLine("Rock crushes Lizard");
-                Console.WriteLine("Lizard poisons Spock");
-                Console.WriteLine("Spock smashes Scissor");
-                Console.WriteLine("Scissor decapitates Lizard");
-                Console.WriteLine("Lizard eats Paper");
-                Console.WriteLine("Paper disproves Spock");
-                Console.WriteLine("Spock vaporizes Rock");
-                Console.WriteLine("Best of three wins!");
-                //Console.WriteLine("Ready to play?!");
-                //readyToPlay = (Console.ReadLine());
-                //if (readyToPlay == "yes")
-                //{
-                //    RunGame();
-                //}
-                //else
-                //{
-                //    Console.WriteLine("Please choose yes or no.");
-                //    DisplayRules();
-                //}
-            }
-            else if (rulesList == "no")
-            {
-                RunGame();
-            }
-            else
-            {
-                Console.WriteLine("Please choose yes or no.");
-                DisplayRules();
+                case "yes":
+                    Console.WriteLine("Rock crushes Scissor");
+                    Console.WriteLine("Scissor cuts paper");
+                    Console.WriteLine("Paper covers Rock");
+                    Console.WriteLine("Rock crushes Lizard");
+                    Console.WriteLine("Lizard poisons Spock");
+                    Console.WriteLine("Spock smashes Scissor");
+                    Console.WriteLine("Scissor decapitates Lizard");
+                    Console.WriteLine("Lizard eats Paper");
+                    Console.WriteLine("Paper disproves Spock");
+                    Console.WriteLine("Spock vaporizes Rock");
+                    Console.WriteLine("Best of three wins!");
+                    ReadyToPlay();
+                    break;
+                case "no":
+                    ReadyToPlay();
+                    break;
+                default:
+                    Console.WriteLine("Please choose yes or no. Do you need the list of rules?");
+                    DisplayRules();
+                    break;
             }
         }
+        public void ReadyToPlay()
+        {
+            Console.WriteLine("Are you ready to play?");
+            readyToPlay = (Console.ReadLine());
+            switch (readyToPlay)
+            {
+                case "yes":
+                    Console.WriteLine("Let's play!");
+                    RunGame();
+                    break;
+                case "no":
+                    EndGame();
+                    break;
+                default:
+                    Console.WriteLine("Please choose yes or no.");
+                    ReadyToPlay();
+                    break;
 
+            }
+        }
+        public void RunGame()
+        {
+            
+            GameBasedOnPlayerNumber();
+            while (player1.score <= 2 && player2.score <= 2)
+            {
+                player1.ChooseGesture();
+                player2.ChooseGesture();
+                CompareGestures();
+            }
+            DisplayWinner();
+            PlayAgain();
+        }
+        public void EndGame()
+        {
+            Console.WriteLine("Thanks for playing!");
+            Console.ReadLine();
+        }
         public void GetPlayerNumber(string numberOfPlayers)
         {
             Console.WriteLine("How many players did you want playing?");
             this.numberOfPlayers = (Console.ReadLine());
-            switch (numberOfPlayers)
+            switch (this.numberOfPlayers)
             {
                 case "1":
                     break;
@@ -80,27 +107,6 @@ namespace rPSLSGame
                     GetPlayerNumber(numberOfPlayers);
                     break;
             }
-
-            //if (numberOfPlayers == "1")
-            //{
-            //    Console.WriteLine("Who is player 1?");
-            //    player1 = new Human(Console.ReadLine());
-            //    Console.ReadLine();
-            //    player2 = new AI();
-            //}
-            //else //(numberOfPlayers == "2")
-            //{
-            //    Console.WriteLine("Who is player 1?");
-            //    player1 = new Human(Console.ReadLine());
-            //    Console.WriteLine("Who is player 2?");
-            //    player2 = new Human(Console.ReadLine());
-            //}
-            //else
-            //{
-            //    player1 = new AI();
-            //    player2 = new AI();
-            //}
-
         }
         public void GameBasedOnPlayerNumber()
         {
@@ -120,29 +126,15 @@ namespace rPSLSGame
                 player2 = new Human(Console.ReadLine());
             }
         }
-        public void RunGame()
-        {
-            Console.WriteLine("Let's play!");
-            GameBasedOnPlayerNumber();
-            while (player1.score <= 2 && player2.score <= 2)
-            {
-                player1.ChooseGesture();
-                player2.ChooseGesture();
-                CompareGestures();
-            }
-
-            DisplayWinner();
-            PlayAgain();
-        }
         public void DisplayWinner()
         {
             if (player1.score == 3)
             {
-                Console.WriteLine(player1.name + " wins!");
+                Console.WriteLine(player1.name + " wins game!");
             }
-            else if (player2.score == 3)
+            else 
             {
-                Console.WriteLine(player2.name + " wins!");
+                Console.WriteLine(player2.name + " wins game!");
             }
 
         }
@@ -152,11 +144,11 @@ namespace rPSLSGame
             playAgain = (Console.ReadLine());
             if (playAgain == "yes")
             {
-                RunGame();
+                ReadyToPlay();
             }
             else
             {
-                Console.WriteLine("Thanks for playing!");
+                EndGame();
             }
         }
         public void CompareGestures()

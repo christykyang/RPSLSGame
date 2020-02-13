@@ -12,8 +12,9 @@ namespace rPSLSGame
         public string gesture;
         public int score;
         public string name;
-
         public List<string> ListOfGestures;
+        //public List<string> ListOfGestures = new List<string>() { "rock" , "paper" , "scissor" , "lizard" , "spock"};
+
 
         public Player()
         {
@@ -27,6 +28,8 @@ namespace rPSLSGame
             gestures.Add("scissor");
             gestures.Add("lizard");
             gestures.Add("spock");
+            //foreach (string gesture in ListOfGestures)
+            //{ Console.WriteLine(gesture); }
         }
 
         public void PlayerScoredPoints()
