@@ -11,10 +11,10 @@ namespace rPSLSGame
         //Do we need varables? (HAS A)
         Random random;
         //constructor (Spawn)
-        public AI()
+        public AI(string name)
         {
+            this.name = name;
             score = 0;
-            name = "Computer";
             ListOfGestures = new List<string>();
             PopulateGesture(ListOfGestures);
         }
